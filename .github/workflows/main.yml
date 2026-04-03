@@ -1,0 +1,32 @@
+name: 🤖 EsamBay Telegram Bot
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "*/50 * * * *"
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: pip install -r requirements.txt
+      - name: Configure Git
+        run: |
+          git config --global user.email "bot@esambay.com"
+          git config --global user.name "EsamBay Bot"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+      - name: Run Bot
+        run: python bot.py
