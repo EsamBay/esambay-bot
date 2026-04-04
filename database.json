@@ -14,5 +14,19 @@
       "subscribed": true,
       "joined_at": "2026-04-04T00:22:26.237773"
     }
-  }
+  },
+  "orders": [
+    {
+      "id": 1,
+      "user_id": 1199941388,
+      "name": "EsamBay",
+      "username": "EsamBay_Support",
+      "category": "🎮 شحن الألعاب",
+      "product": "🔫 PUBG Mobile",
+      "variant": "60 UC",
+      "price": "5,000 ج.س",
+      "status": "pending",
+      "time": "2026-04-04T07:07:37.465524"
+    }
+  ]
 }
